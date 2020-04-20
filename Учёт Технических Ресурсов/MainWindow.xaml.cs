@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Учёт_Технических_Ресурсов.Model;
 using Учёт_Технических_Ресурсов.Model.EquipmentModel;
+using Учёт_Технических_Ресурсов.Model.TechnicalResources.ProgramsModel;
+using OperatingSystem = Учёт_Технических_Ресурсов.Model.TechnicalResources.ProgramsModel.OperatingSystem;
 
 namespace Учёт_Технических_Ресурсов
 {
@@ -22,19 +25,22 @@ namespace Учёт_Технических_Ресурсов
         public MainWindow()
         {
             InitializeComponent();
-            using(var inventory = new EquipmentContext())
+            using(var technicalResources = new TechnicalResourcesContext())
             {
-                inventory.Monitors.Add(new Monitor() 
-                {Location = "Бухгалтерия",
-                DateOfRecept = DateTime.Now,
-                IsUsed = true,
-                Matrix = TypeMatrix.OLED,
-                Price = 20000,
-                Description = "Монитор хороший",
-                MonitorResolution = new MonitorResolution(1920,180),
-                Computer = null
-                });
-                inventory.SaveChanges();
+                var computers = technicalResources.Computers;
+                var os = new OperatingSystem()
+                {
+                    Title = "windows",
+                    Location = "отдел2"
+                };
+                var computer = new Computer()
+                {
+                    Location = "Отдел1",
+                    Title = "comp1",
+                    OperatingSystem = os
+                };
+                technicalResources.Computers.Add(computer);
+                technicalResources.SaveChanges();
             }
         }
     }

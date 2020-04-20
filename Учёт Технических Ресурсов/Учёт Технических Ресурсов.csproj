@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PropertyChanged.Fody.3.2.8\build\PropertyChanged.Fody.props" Condition="Exists('..\packages\PropertyChanged.Fody.3.2.8\build\PropertyChanged.Fody.props')" />
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -44,6 +45,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PropertyChanged, Version=3.2.8.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
+      <HintPath>..\packages\PropertyChanged.Fody.3.2.8\lib\net40\PropertyChanged.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -79,14 +83,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ComponentPartsModel\CPU.cs" />
-    <Compile Include="Model\ComponentPartsModel\RUM.cs" />
-    <Compile Include="Model\EquipmentModel\Computer.cs" />
-    <Compile Include="Model\EquipmentModel\EquipmentBaseModel.cs" />
-    <Compile Include="Model\EquipmentModel\EquipmentContext.cs" />
-    <Compile Include="Model\EquipmentModel\Monitor.cs" />
-    <Compile Include="Model\EquipmentModel\Printer.cs" />
-    <Compile Include="Model\EquipmentModel\Resolution.cs" />
+    <Compile Include="Model\TechnicalResources\ComponentPartsModel\CPU.cs" />
+    <Compile Include="Model\TechnicalResources\ComponentPartsModel\Motherboard.cs" />
+    <Compile Include="Model\TechnicalResources\ComponentPartsModel\RUM.cs" />
+    <Compile Include="Model\TechnicalResources\EquipmentModel\Computer.cs" />
+    <Compile Include="Model\TechnicalResources\ProgramModel\OperatingSystem.cs" />
+    <Compile Include="Model\TechnicalResources\ProgramModel\ApplicationProgram.cs" />
+    <Compile Include="Model\TechnicalResources\TechnicalResourcesBaseModel.cs" />
+    <Compile Include="Model\TechnicalResources\TechnicalResourcesContext.cs" />
+    <Compile Include="Model\TechnicalResources\EquipmentModel\Monitor.cs" />
+    <Compile Include="Model\TechnicalResources\EquipmentModel\Printer.cs" />
+    <Compile Include="Model\TechnicalResources\EquipmentModel\MonitorResolution.cs" />
+    <Compile Include="Model\Users\User.cs" />
+    <Compile Include="Model\Users\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -114,8 +123,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Model\ProgramModel\" />
-    <Folder Include="Model\UsersModel\" />
+    <Folder Include="ViewModel\" />
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -124,6 +133,9 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Fody.6.1.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.1.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\PropertyChanged.Fody.3.2.8\build\PropertyChanged.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.3.2.8\build\PropertyChanged.Fody.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Fody.6.1.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.1.1\build\Fody.targets')" />
 </Project>
