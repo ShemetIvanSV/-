@@ -7,6 +7,7 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
     {
         private bool overclockingFunction;
         private Computer computer;
+        private int? computerId;
 
         [ForeignKey("Computer")]
         public override int Id
@@ -14,8 +15,8 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return base.Id; }
             set
             {
-                OnPropertyChanged("Id");
                 base.Id = value;
+                OnPropertyChanged();
             }
         }
 
@@ -24,8 +25,18 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return overclockingFunction; }
             set
             {
-                OnPropertyChanged("OverclockingFunction");
                 overclockingFunction = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int? ComputerId
+        {
+            get { return computerId; }
+            set
+            {
+                computerId = value;
+                OnPropertyChanged();
             }
         }
 
@@ -34,8 +45,8 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged();
             }
         }
     }

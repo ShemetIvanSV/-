@@ -6,9 +6,9 @@ using OperatingSystem = Учёт_Технических_Ресурсов.Model.T
 
 namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
 {
-    class TechnicalResourcesContext : ObjectContext
+    class TechnicalResourcesContext : DbContext
     {
-        public TechnicalResourcesContext() : base("TechnicalResourcesDataBase") { }
+        public TechnicalResourcesContext() : base("TechnicalResourcesDB") { }
         public DbSet<Monitor> Monitors { get; set; }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Printer> Printers { get; set; }

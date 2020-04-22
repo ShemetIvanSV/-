@@ -20,35 +20,38 @@ namespace Учёт_Технических_Ресурсов.Model
             get => id;
             set
             {
-                OnPropertyChanged("Id");
                 id = value;
+                OnPropertyChanged();
             }
         }
+
         public int Price
         {
             get => price;
             set
             {
-                OnPropertyChanged("Price");
                 price = value;
+                OnPropertyChanged();
             }
         }
+
         public DateTime DateOfRecept
         {
             get => dateOfRecept;
             set
             {
-                OnPropertyChanged("DateOfRecept");
                 dateOfRecept = value;
+                OnPropertyChanged();
             }
         }
+
         public bool IsUsed
         {
             get => isUsed;
             set
-            {
-                OnPropertyChanged("IsUsed");
+            {  
                 isUsed = value;
+                OnPropertyChanged();
             }
         }
 
@@ -57,8 +60,8 @@ namespace Учёт_Технических_Ресурсов.Model
             get => description;
             set
             {
-                OnPropertyChanged("Description");
                 description = value;
+                OnPropertyChanged();
             }
         }
 
@@ -68,8 +71,8 @@ namespace Учёт_Технических_Ресурсов.Model
             get => location;
             set
             {
-                OnPropertyChanged("Location");
                 location = value;
+                OnPropertyChanged();
             }
         }
 
@@ -79,8 +82,8 @@ namespace Учёт_Технических_Ресурсов.Model
             get => title;
             set
             {
-                OnPropertyChanged("Title");
                 title = value;
+                OnPropertyChanged();
             }
         }
 

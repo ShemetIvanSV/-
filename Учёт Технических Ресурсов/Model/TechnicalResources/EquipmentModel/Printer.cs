@@ -14,8 +14,8 @@
             get { return printingTechnology; }
             set
             {
-                OnPropertyChanged("PrintingTechnology");
                 printingTechnology = value;
+                OnPropertyChanged();
             }
         }
 
@@ -24,8 +24,8 @@
             get { return numberOfColors; }
             set
             {
-                OnPropertyChanged("NumberOfColors");
                 numberOfColors = value;
+                OnPropertyChanged();
             }
         }
 

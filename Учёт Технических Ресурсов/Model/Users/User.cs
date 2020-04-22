@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Учёт_Технических_Ресурсов.Model.Users
 {
@@ -12,23 +8,36 @@ namespace Учёт_Технических_Ресурсов.Model.Users
     {
         private string login;
         private string password;
+        private int id;
 
+        [Required]
         public string Login
         {
             get => login;
             set
             {
-                OnPropertyChanged("Login");
                 login = value;
+                OnPropertyChanged();
             }
         }
+
         public string Password
         {
             get => password;
             set
             {
-                OnPropertyChanged("Password");
                 password = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Id
+        {
+            get => id;
+            set
+            {
+                id = value;
+                OnPropertyChanged();
             }
         }
 

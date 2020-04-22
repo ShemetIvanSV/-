@@ -13,13 +13,13 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
         private OperatingSystem operatingSystem;
         private ObservableCollection<ApplicationProgram> applicationPrograms;
 
-        public virtual ObservableCollection<Monitor> Monitor
+        public virtual ObservableCollection<Monitor> Monitors
         {
             get { return monitors; }
             set
             {
-                OnPropertyChanged("Monitor");
                 monitors = value;
+                OnPropertyChanged();
             }
         }
 
@@ -28,8 +28,8 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             get { return cPU; }
             set
             {
-                OnPropertyChanged("CPU");
                 cPU = value;
+                OnPropertyChanged();
             }
         }
 
@@ -38,8 +38,8 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             get { return rUM; }
             set
             {
-                OnPropertyChanged("RUM");
                 rUM = value;
+                OnPropertyChanged();
             }
         }
 
@@ -48,8 +48,8 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             get { return motherboard; }
             set
             {
-                OnPropertyChanged("Motherboard");
                 motherboard = value;
+                OnPropertyChanged();
             }
         }
 
@@ -58,8 +58,8 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             get { return operatingSystem; }
             set
             {
-                OnPropertyChanged("OperatingSystem");
                 operatingSystem = value;
+                OnPropertyChanged();
             }
         }
 
@@ -68,8 +68,8 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             get { return applicationPrograms; }
             set
             {
-                OnPropertyChanged("ApplicationPrograms");
                 applicationPrograms = value;
+                OnPropertyChanged();
             }
         }
     }

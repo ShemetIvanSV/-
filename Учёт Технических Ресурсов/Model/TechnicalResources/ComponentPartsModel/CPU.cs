@@ -8,6 +8,7 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
         private int numberOfCores;
         private int processorFrequency;
         private Computer computer;
+        private int computerId;
 
         [ForeignKey("Computer")]
         public override int Id
@@ -15,17 +16,18 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return base.Id; }
             set 
             {
-                OnPropertyChanged("Id");
-                base.Id = value; 
+                base.Id = value;
+                OnPropertyChanged();
             }
         }
+
         public int NumberOfCores
         {
             get { return numberOfCores; }
             set
             {
-                OnPropertyChanged("NumberOfCores");
                 numberOfCores = value;
+                OnPropertyChanged();
             }
         }
 
@@ -34,8 +36,18 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return processorFrequency; }
             set
             {
-                OnPropertyChanged("ProcessorFrequency");
                 processorFrequency = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int ComputerId
+        {
+            get { return computerId; }
+            set
+            {
+                computerId = value;
+                OnPropertyChanged();
             }
         }
 
@@ -44,8 +56,8 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged();
             }
         }
     }

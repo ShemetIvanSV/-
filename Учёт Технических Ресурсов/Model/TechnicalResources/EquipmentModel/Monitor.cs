@@ -13,32 +13,45 @@
         private TypeMatrix matrix;
         private MonitorResolution monitorResolution;
         private Computer computer;
+        private int? computerId;
 
         public TypeMatrix Matrix
         {
             get { return matrix; }
             set
             {
-                OnPropertyChanged("Matrix");
                 matrix = value;
+                OnPropertyChanged();
             }
         }
+
         public MonitorResolution MonitorResolution
         {
             get { return monitorResolution; }
             set
             {
-                OnPropertyChanged("MonitorResolution");
                 monitorResolution = value;
+                OnPropertyChanged();
             }
         }
+
+        public int? ComputerId
+        {
+            get { return computerId; }
+            set
+            {
+                computerId = value;
+                OnPropertyChanged();
+            }
+        }
+
         public virtual Computer Computer
         {
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged();
             }
         }
     }

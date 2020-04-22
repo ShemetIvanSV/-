@@ -9,13 +9,14 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
         private Computer computer;
         private int? computerId;
 
+        [ForeignKey("Computer")]
         public override int Id
         {
             get { return base.Id; }
             set
             {
-                OnPropertyChanged("Id");
                 base.Id = value;
+                OnPropertyChanged();
             }
         }
 
@@ -24,8 +25,8 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged(nameof(Computer));
             }
         }
 
@@ -34,8 +35,8 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
             get { return version; }
             set
             {
-                OnPropertyChanged("Version");
                 version = value;
+                OnPropertyChanged(nameof(Version));
             }
         }
 
@@ -44,8 +45,8 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
             get { return computerId; }
             set
             {
-                OnPropertyChanged("ComputerId");
-                ComputerId = value;
+                computerId = value;
+                OnPropertyChanged(nameof(ComputerId));
             }
         }
     }

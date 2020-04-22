@@ -6,14 +6,25 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
     {
         private int version;
         private Computer computer;
+        private int computerId;
+
+        public int ComputerId
+        {
+            get { return computerId; }
+            set
+            {
+                computerId = value;
+                OnPropertyChanged();
+            }
+        }
 
         public Computer Computer
         {
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged();
             }
         }
         public int Version
@@ -21,8 +32,8 @@ namespace Учёт_Технических_Ресурсов.Model.TechnicalResour
             get { return version; }
             set
             {
-                OnPropertyChanged("Version");
                 version = value;
+                OnPropertyChanged();
             }
         }
     }

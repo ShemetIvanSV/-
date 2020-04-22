@@ -7,14 +7,15 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
         private int rumFrequency;
         private int size;
         private Computer computer;
+        private int? computerId;
 
         public int RumFrequency
         {
             get { return rumFrequency; }
             set
             {
-                OnPropertyChanged("RumFrequency");
                 rumFrequency = value;
+                OnPropertyChanged();
             }
         }
 
@@ -23,8 +24,18 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return size; }
             set
             {
-                OnPropertyChanged("Size");
                 size = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int? ComputerId
+        {
+            get { return computerId; }
+            set
+            {
+                computerId = value;
+                OnPropertyChanged();
             }
         }
 
@@ -33,8 +44,8 @@ namespace Учёт_Технических_Ресурсов.Model.ComponentPartsM
             get { return computer; }
             set
             {
-                OnPropertyChanged("Computer");
                 computer = value;
+                OnPropertyChanged();
             }
         }
     }
