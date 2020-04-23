@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Учёт_Технических_Ресурсов.ViewModel;
 
-namespace Учёт_Технических_Ресурсов.View
+namespace Учёт_Технических_Ресурсов.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Login.xaml
+    /// Логика взаимодействия для Page1.xaml
     /// </summary>
-    public partial class Login : Page
+    public partial class Page1 : Page
     {
-        public Login()
+        public Page1()
         {
             InitializeComponent();
-            DataContext = new LoginPageVM();
         }
     }
 }

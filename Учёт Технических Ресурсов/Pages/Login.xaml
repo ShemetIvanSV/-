@@ -5,9 +5,9 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Учёт_Технических_Ресурсов.View"
       mc:Ignorable="d"
-      Title="Login" Height="360.375" Width="416">
+      Title="Login" Height="428.375" Width="416">
 
-    <Grid Background="#FFD8D8D8" Margin="0,-24,-18,-19">
+    <Grid Background="#FFD8D8D8" Height="590" Width="758">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -21,7 +21,7 @@
                    Height="34"
                    Width="91"/>
             <TextBox HorizontalAlignment="Left" 
-                     Text="{Binding Login}"
+                     Text="{Binding CurrentUser.Login,UpdateSourceTrigger=PropertyChanged}"
                      Height="23"
                      Margin="34,61,0,0" 
                      TextWrapping="Wrap"
@@ -50,7 +50,7 @@
                    Height="34" 
                    Width="91"/>
             <TextBox HorizontalAlignment="Left" 
-                Text="{Binding Password}"
+                Text="{Binding CurrentUser.Password,UpdateSourceTrigger=PropertyChanged}"
                 Height="23"
                 Margin="34,119,0,0" 
                 TextWrapping="Wrap"
@@ -58,8 +58,5 @@
                 Width="200" 
                 Background="#FFD8D8D8"/>
         </Grid>
-        <Image Margin="176,13,176,308" 
-               Source="/Учёт Технических Ресурсов;component/technical-support-2_icon-icons.com_52811.ico" 
-               Stretch="Fill"/>
     </Grid>
 </Page>

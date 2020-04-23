@@ -1,6 +1,7 @@
 ﻿using System.Windows;
-using Учёт_Технических_Ресурсов.Model.EquipmentModel;
 using Учёт_Технических_Ресурсов.View;
+using Учёт_Технических_Ресурсов.ViewModel;
+
 namespace Учёт_Технических_Ресурсов
 {
     public partial class MainWindow : Window
@@ -8,8 +9,6 @@ namespace Учёт_Технических_Ресурсов
         public MainWindow()
         {
             InitializeComponent();
-            var login = new Login();
-            f.Navigate(login);
         }
     }
 }

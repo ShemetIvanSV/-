@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Input;
 using Учёт_Технических_Ресурсов.Command;
 using Учёт_Технических_Ресурсов.Model.Users;
 
@@ -12,39 +9,38 @@ namespace Учёт_Технических_Ресурсов.ViewModel
     class LoginPageVM : BaseViewModel
     {
         private ObservableCollection<User> Users { get; set; }
-        private User User { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public User CurrentUser { get; set; } = new User();
 
 
-        private BaseCommand validationCommand;
-        public BaseCommand ValidationCommand
+        private ICommand validationCommand;
+        public ICommand ValidationCommand
         {
             get
             {
                 return validationCommand ??
-                    (validationCommand = new BaseCommand(obj =>
+                    (validationCommand = new RelayCommand(obj =>
                     {
-                        User = new User()
+                        if (UserValidation(CurrentUser))
                         {
-                            Login = Login,
-                            Password = Password
-                        };
-                        
-                        if(Validation(User))
-                        {
-                            using (var userDb = new UserContext())
-                            {
-                                var users = userDb.Users;
-                                users.Add(User);
-                                userDb.SaveChanges();
-                            };
+                            //This is very very bad
+                            NavigationService.Page1Moving();
                         }
+                        else
+                        {
+                            //This is bad
+                            MessageBox.Show("Неверное имя пользователя или пароль");
+                        }
+
                     }));
             }
         }
 
         public LoginPageVM()
+        {
+            UsersReturn();
+        }
+
+        private void UsersReturn()
         {
             using (var userDb = new UserContext())
             {
@@ -56,12 +52,12 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             };
         }
 
-        private bool Validation(User user)
+        private bool UserValidation(User user)
         {
             bool isValid = false;
-            foreach(var userDb in Users)
+            foreach (var userDb in Users)
             {
-                if(user.Login == userDb.Login && user.Password == userDb.Password)
+                if (user.Login == userDb.Login && user.Password == userDb.Password)
                 {
                     isValid = true;
                     break;
