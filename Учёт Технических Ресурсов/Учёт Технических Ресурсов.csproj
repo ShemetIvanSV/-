@@ -38,16 +38,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net462\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -66,17 +79,64 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
+    <Compile Include="DialogService\DefaultDialogService.cs" />
+    <Compile Include="DialogService\IDialogService.cs" />
+    <Compile Include="EnumService\EnumItemSource.cs" />
+    <Compile Include="EquipmentDbRepository\ApplicationRepository.cs" />
+    <Compile Include="EquipmentDbRepository\ComputerRepository.cs" />
+    <Compile Include="EquipmentDbRepository\CpuRepository.cs" />
+    <Compile Include="EquipmentDbRepository\IEquipmentRepository.cs" />
+    <Compile Include="EquipmentDbRepository\MonitorRepository.cs" />
+    <Compile Include="EquipmentDbRepository\MotherboardRepository.cs" />
+    <Compile Include="EquipmentDbRepository\OperatingSystemRepository.cs" />
+    <Compile Include="EquipmentDbRepository\PrinterRepository.cs" />
+    <Compile Include="EquipmentDbRepository\RumRepository.cs" />
+    <Compile Include="Pages\CPUs.xaml.cs">
+      <DependentUpon>CPUs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Monitors.xaml.cs">
+      <DependentUpon>Monitors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TechnicalCreator\CreateApp.cs" />
+    <Compile Include="TechnicalCreator\CreateComputer.cs" />
+    <Compile Include="TechnicalCreator\CreateCPU.cs" />
+    <Compile Include="TechnicalCreator\CreateMonitor.cs" />
+    <Compile Include="TechnicalCreator\CreateMotherboard.cs" />
+    <Compile Include="TechnicalCreator\CreateOS.cs" />
+    <Compile Include="TechnicalCreator\CreatePrinter.cs" />
+    <Compile Include="TechnicalCreator\CreateRUM.cs" />
+    <Compile Include="TechnicalCreator\AddTechnical.cs" />
+    <Compile Include="CommandService\RelayCommand.cs" />
+    <Compile Include="Pages\AddData.xaml.cs">
+      <DependentUpon>AddData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Computers.xaml.cs">
+      <DependentUpon>Computers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AddDataVM.cs" />
+    <Compile Include="ViewModel\ApplicationProgrammsVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\CPUsVM.cs" />
     <Compile Include="ViewModel\LoginPageVM.cs" />
-    <Compile Include="Pages\Login.xaml.cs">
+    <Compile Include="ViewModel\MotherboardsVM.cs" />
+    <Compile Include="ViewModel\NavigateVM.cs" />
+    <Compile Include="ViewModel\ComputersVM.cs" />
+    <Compile Include="ViewModel\MonitorsVM.cs" />
+    <Compile Include="ViewModel\OperatingSystemsVM.cs" />
+    <Compile Include="ViewModel\PrintersVM.cs" />
+    <Compile Include="ViewModel\RUMsVM.cs" />
+    <Compile Include="ViewModel\TablePageBaseVM.cs" />
+    <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\NavigationService.cs" />
-    <Page Include="MainWindow.xaml">
+    <Page Include="Pages\Monitors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -84,31 +144,42 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Login.xaml">
+    <Page Include="Pages\AddData.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page1.xaml">
+    <Page Include="Pages\Computers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CPUs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\TechnicalResources\ComponentPartsModel\CPU.cs" />
-    <Compile Include="Model\TechnicalResources\ComponentPartsModel\Motherboard.cs" />
-    <Compile Include="Model\TechnicalResources\ComponentPartsModel\RUM.cs" />
-    <Compile Include="Model\TechnicalResources\EquipmentModel\Computer.cs" />
-    <Compile Include="Model\TechnicalResources\ProgramModel\OperatingSystem.cs" />
-    <Compile Include="Model\TechnicalResources\ProgramModel\ApplicationProgram.cs" />
+    <Compile Include="Model\TechnicalResources\CPU.cs" />
+    <Compile Include="Model\TechnicalResources\Motherboard.cs" />
+    <Compile Include="Model\TechnicalResources\RUM.cs" />
+    <Compile Include="Model\TechnicalResources\Computer.cs" />
+    <Compile Include="Model\TechnicalResources\OperatingSystem.cs" />
+    <Compile Include="Model\TechnicalResources\ApplicationProgram.cs" />
     <Compile Include="Model\TechnicalResources\TechnicalResourcesBaseModel.cs" />
     <Compile Include="Model\TechnicalResources\TechnicalResourcesContext.cs" />
-    <Compile Include="Model\TechnicalResources\EquipmentModel\Monitor.cs" />
-    <Compile Include="Model\TechnicalResources\EquipmentModel\Printer.cs" />
-    <Compile Include="Model\TechnicalResources\EquipmentModel\MonitorResolution.cs" />
+    <Compile Include="Model\TechnicalResources\Monitor.cs" />
+    <Compile Include="Model\TechnicalResources\Printer.cs" />
     <Compile Include="Model\Users\User.cs" />
     <Compile Include="Model\Users\UserContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -141,6 +212,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\technical-support-2_icon-icons.com_52811.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

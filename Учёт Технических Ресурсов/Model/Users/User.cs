@@ -4,11 +4,11 @@ using System.Runtime.CompilerServices;
 
 namespace Учёт_Технических_Ресурсов.Model.Users
 {
-    class User : INotifyPropertyChanged
+    internal class User : INotifyPropertyChanged
     {
+        private int id;
         private string login;
         private string password;
-        private int id;
 
         [Required]
         public string Login
@@ -41,10 +41,16 @@ namespace Учёт_Технических_Ресурсов.Model.Users
             }
         }
 
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public override string ToString()
+        {
+            return Login;
+        }
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

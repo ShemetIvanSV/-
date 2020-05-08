@@ -2,8 +2,35 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Учёт_Технических_Ресурсов"
-             StartupUri="MainWindow.xaml">
+             xmlns:vm="clr-namespace:Учёт_Технических_Ресурсов.ViewModel"
+              xmlns:v="clr-namespace:Учёт_Технических_Ресурсов.Views"
+             xmlns:page="clr-namespace:Учёт_Технических_Ресурсов.Pages"
+             StartupUri="Views/login.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type vm:MonitorsVM}">
+                <page:Monitors/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ComputersVM}">
+                <page:Computers/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:NavigateVM}">
+                <page:MainView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:AddDataVM}">
+                <page:AddData/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:CPUsVM}">
+                <page:CPUs/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:MainWindow}"/>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

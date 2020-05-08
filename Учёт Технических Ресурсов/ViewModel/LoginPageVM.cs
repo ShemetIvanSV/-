@@ -1,43 +1,66 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
-using Учёт_Технических_Ресурсов.Command;
+using Учёт_Технических_Ресурсов.CommandService;
 using Учёт_Технических_Ресурсов.Model.Users;
+using Учёт_Технических_Ресурсов.Views;
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {
     class LoginPageVM : BaseViewModel
     {
-        private ObservableCollection<User> Users { get; set; }
-        public User CurrentUser { get; set; } = new User();
-
-
         private ICommand validationCommand;
-        public ICommand ValidationCommand
+        private User currentUser;
+        private readonly Action close;
+        public LoginPageVM(Action close)
         {
+            this.close = close;
+            CurrentUser = new User();
+            UsersReturn();
+        }
+
+        public ObservableCollection<User> Users { get; set; }
+
+        public User CurrentUser
+        {
+            get { return currentUser; }
+            set
+            {
+                currentUser = value;
+                OnPropertyChanged();
+
+            }
+        }
+
+        public string CurrentLogin
+        {
+            get { return CurrentUser.Login; }
+            set
+            {
+                CurrentUser.Login = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand ValidationCommand
+        { 
             get
             {
                 return validationCommand ??
                     (validationCommand = new RelayCommand(obj =>
                     {
+                        CurrentUser.Login = CurrentLogin;
                         if (UserValidation(CurrentUser))
                         {
-                            //This is very very bad
-                            NavigationService.Page1Moving();
+                            MainWindow mainWindow = new MainWindow();
+                            mainWindow.Show();
+                            this.close();
+                            return;
                         }
-                        else
-                        {
-                            //This is bad
-                            MessageBox.Show("Неверное имя пользователя или пароль");
-                        }
-
+                        MessageBox.Show("Неверное имя пользователя или пароль");
                     }));
             }
-        }
-
-        public LoginPageVM()
-        {
-            UsersReturn();
         }
 
         private void UsersReturn()
@@ -62,7 +85,6 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                     isValid = true;
                     break;
                 }
-                isValid = false;
             }
             return isValid;
         }

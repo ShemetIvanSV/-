@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
-using Учёт_Технических_Ресурсов.Model.ComponentPartsModel;
+using Учёт_Технических_Ресурсов.Model.TechnicalResources;
 using Учёт_Технических_Ресурсов.Model.TechnicalResources.ProgramsModel;
 using OperatingSystem = Учёт_Технических_Ресурсов.Model.TechnicalResources.ProgramsModel.OperatingSystem;
 

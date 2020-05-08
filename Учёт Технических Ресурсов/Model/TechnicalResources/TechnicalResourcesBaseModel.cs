@@ -5,14 +5,14 @@ using System.Runtime.CompilerServices;
 
 namespace Учёт_Технических_Ресурсов.Model
 {
-    abstract class TechnicalResourcesBaseModel : INotifyPropertyChanged
+    public abstract class TechnicalResourcesBaseModel : INotifyPropertyChanged
     {
-        private int id;
-        private int price;
-        private DateTime dateOfRecept = DateTime.Now;
-        private bool isUsed;
+        private DateTime dateOfCreate = DateTime.Now;
         private string description;
-        private string location;
+        private string document;
+        private int id;
+        private bool isUsed;
+        private int price;
         private string title;
 
         public virtual int Id
@@ -35,12 +35,12 @@ namespace Учёт_Технических_Ресурсов.Model
             }
         }
 
-        public DateTime DateOfRecept
+        public DateTime DateOfCreate
         {
-            get => dateOfRecept;
+            get => dateOfCreate;
             set
             {
-                dateOfRecept = value;
+                dateOfCreate = value;
                 OnPropertyChanged();
             }
         }
@@ -49,7 +49,7 @@ namespace Учёт_Технических_Ресурсов.Model
         {
             get => isUsed;
             set
-            {  
+            {
                 isUsed = value;
                 OnPropertyChanged();
             }
@@ -66,17 +66,6 @@ namespace Учёт_Технических_Ресурсов.Model
         }
 
         [Required]
-        public string Location
-        {
-            get => location;
-            set
-            {
-                location = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [Required]
         public string Title
         {
             get => title;
@@ -87,8 +76,24 @@ namespace Учёт_Технических_Ресурсов.Model
             }
         }
 
+        public string DocumentPath
+        {
+            get => document;
+            set
+            {
+                document = value;
+                OnPropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
+
+        public override string ToString()
+        {
+            return Title;
+        }
+
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
