@@ -20,22 +20,12 @@ namespace Учёт_Технических_Ресурсов.ViewModel
         {
             get => SelectedEquipment.Matrix;
             set
-            { 
+            {
                 SelectedEquipment.Matrix = value;
                 OnPropertyChanged();
             }
         }
 
-        public string SelectedM
-        {
-            get => SelectedMatrix.ToString();
-            set
-            {
-                var s =SelectedMatrix.ToString();
-                    s = value;
-                OnPropertyChanged();
-            }
-        }
 
         public BaseViewModel ViewModelNavigation
         {
@@ -46,6 +36,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                 OnPropertyChanged();
             }
         }
+
 
         public ICommand SaveChangeCommand => saveChangeCommand ??
                                              (saveChangeCommand = new RelayCommand(obj => { EquipmentsSaveChange(); }));
@@ -63,7 +54,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                    }
                                                    catch
                                                    {
-                                                       DefaultDialogService.ShowMessage("Документ отсутствует");
+                                                       DocumentDialogService.ShowMessage("Документ отсутствует");
                                                    }
                                                }));
     }

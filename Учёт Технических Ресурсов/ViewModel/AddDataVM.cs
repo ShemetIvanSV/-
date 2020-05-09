@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Windows.Input;
 using Учёт_Технических_Ресурсов.CommandService;
 using Учёт_Технических_Ресурсов.DialogService;
@@ -21,18 +23,27 @@ namespace Учёт_Технических_Ресурсов.ViewModel
         Программное_обеспечение
     }
 
-    class AddDataVM : BaseViewModel
+    internal class AddDataVM : BaseViewModel
     {
+        private ICommand addCommand;
         private int? computerId;
-        private BaseViewModel viewModelNavigation;
+        private ICommand readFilePathCommand;
+        private ICommand readPicturePathCommand;
         private TechnicalResourcesBaseModel resourcesBaseModel;
         private TechnicalTypes selectedTechnicalTypes;
-        private ICommand addCommand;
-        private ICommand readFilePathCommand;
+        private BaseViewModel viewModelNavigation;
+
+        public AddDataVM()
+        {
+            ResourcesBaseModel = new Computer();
+            TableNames = new ObservableCollection<object>();
+            ViewModelNavigation = this;
+            ReturnToTypes(TableNames);
+        }
 
         public int? ComputerId
         {
-            get { return computerId; }
+            get => computerId;
             set
             {
                 computerId = value;
@@ -40,11 +51,12 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             }
         }
 
-        private DefaultDialogService DialogService { get; set; } = new DefaultDialogService();
+        private DocumentDialogService DocumentDialogService { get; } = new DocumentDialogService();
+        private PictureDialogService PictureDialogService { get; } = new PictureDialogService();
 
         public BaseViewModel ViewModelNavigation
         {
-            get { return viewModelNavigation; }
+            get => viewModelNavigation;
             set
             {
                 viewModelNavigation = value;
@@ -54,7 +66,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
         public TechnicalResourcesBaseModel ResourcesBaseModel
         {
-            get { return resourcesBaseModel; }
+            get => resourcesBaseModel;
             set
             {
                 resourcesBaseModel = value;
@@ -64,7 +76,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
         public TechnicalTypes SelectedTechnicalType
         {
-            get { return selectedTechnicalTypes; }
+            get => selectedTechnicalTypes;
             set
             {
                 selectedTechnicalTypes = value;
@@ -76,38 +88,29 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
         public ObservableCollection<object> TableNames { get; set; }
 
-        public AddDataVM()
-        {
-            ResourcesBaseModel = new Computer();
-            TableNames = new ObservableCollection<object>();
-            ViewModelNavigation = this;
-            ReturnToTypes(TableNames);
-        }
-
         public ICommand AddCommand => addCommand ??
-                 (addCommand = new RelayCommand(obj =>
-                 {
-                     TechnicalCreating();
-                 }));
+                                      (addCommand = new RelayCommand(obj => { TechnicalCreating(); }));
 
         public ICommand ReadFilePathCommand => readFilePathCommand ??
-         (readFilePathCommand = new RelayCommand(obj =>
-         {
-             DialogService.OpenFileDialog();
-             ResourcesBaseModel.DocumentPath = DialogService.FilePath;
-         }));
+                                               (readFilePathCommand = new RelayCommand(obj =>
+                                               {
+                                                   DocumentDialogService.OpenFileDialog();
+                                                   ResourcesBaseModel.DocumentPath = DocumentDialogService.FilePath;
+                                               }));
+        public ICommand ReadPicturePathCommand => readPicturePathCommand ??
+                                               (readPicturePathCommand = new RelayCommand(obj =>
+                                               {
+                                                   PictureDialogService.OpenFileDialog();
+                                                   ResourcesBaseModel.PicturePath = PictureDialogService.FilePath;
+                                               }));
 
         private void ReturnToTypes(ObservableCollection<object> collection)
         {
-
             var tableNames = new TechnicalTypes();
 
             var technicalNames = Enum.GetValues(tableNames.GetType());
 
-            foreach (var t in technicalNames)
-            {
-                collection.Add(t);
-            }
+            foreach (var t in technicalNames) collection.Add(t);
         }
 
         private void TechnicalCreating()
@@ -144,24 +147,22 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
                 AddTechnical.CreateTechnical();
             }
-            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            catch (DbUpdateException)
             {
-                DialogService.ShowMessage("Данный компьютер не найден");
+                DocumentDialogService.ShowMessage("Данный компьютер не найден");
             }
-            catch (System.Data.Entity.Validation.DbEntityValidationException)
+            catch (DbEntityValidationException)
             {
-                DialogService.ShowMessage("Введите все обязательные данные(помечены *)");
+                DocumentDialogService.ShowMessage("Введите все обязательные данные(помечены *)");
             }
             catch (InvalidOperationException)
             {
-                DialogService.ShowMessage("Данная техника обязательно должна быть связана с ПК");
+                DocumentDialogService.ShowMessage("Данная техника обязательно должна быть связана с ПК");
             }
             catch (Exception)
             {
-                DialogService.ShowMessage("Неизвестная ошибка");
+                DocumentDialogService.ShowMessage("Неизвестная ошибка");
             }
         }
     }
 }
-
-

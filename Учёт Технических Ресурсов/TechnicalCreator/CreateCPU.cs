@@ -11,6 +11,7 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             CPU = new CPU()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
                 ComputerId = (int)computerId,
                 Price = this.Price,

@@ -15,6 +15,7 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             Monitor = new Monitor()
             {
+                PicturePath = this.PicturePath,
                 ComputerId = this.ComputerId,
                 DocumentPath = this.DocumentPath,
                 Price = this.Price,

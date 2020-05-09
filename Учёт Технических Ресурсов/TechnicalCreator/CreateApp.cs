@@ -16,6 +16,7 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             ApplicationProgram = new ApplicationProgram()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
                 ComputerId = this.ComputerId,
                 Price = this.Price,

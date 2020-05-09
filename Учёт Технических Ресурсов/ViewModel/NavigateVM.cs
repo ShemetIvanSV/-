@@ -110,7 +110,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             {
                 return openApplicationsViewCommand ??
                        (openApplicationsViewCommand =
-                           new RelayCommand(obj => { ViewModelNavigation = new ApplicationProgrammsVM(); }));
+                           new RelayCommand(obj => { ViewModelNavigation = new ApplicationProgramsVM(); }));
             }
         }
 

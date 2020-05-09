@@ -6,7 +6,7 @@ using Учёт_Технических_Ресурсов.Model.TechnicalResources.
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {
-    internal class ApplicationProgrammsVM : TablePageBaseVM<ApplicationProgram, ApplicationRepository>
+    internal class ApplicationProgramsVM : TablePageBaseVM<ApplicationProgram, ApplicationRepository>
     {
         private ICommand openDocumentCommand;
         private ICommand removeCommand;
@@ -39,7 +39,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                    }
                                                    catch
                                                    {
-                                                       DefaultDialogService.ShowMessage("Документ отсутствует");
+                                                       DocumentDialogService.ShowMessage("Документ отсутствует");
                                                    }
                                                }));
     }

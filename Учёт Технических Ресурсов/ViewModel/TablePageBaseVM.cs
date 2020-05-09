@@ -15,14 +15,14 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
         protected TablePageBaseVM()
         {
-            DefaultDialogService = new DefaultDialogService();
+            DocumentDialogService = new DocumentDialogService();
             SelectedEquipment = new T();
             EquipmentsView = new ObservableCollection<T>();
             EqipmentRepository = new R();
             EquipmentsReturn();
         }
 
-        protected DefaultDialogService DefaultDialogService { get; set; }
+        protected DocumentDialogService DocumentDialogService { get; set; }
 
         protected IEquipmentRepository<T> EqipmentRepository { get; set; }
 
@@ -55,7 +55,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
             catch (DbUpdateConcurrencyException)
             {
-                DefaultDialogService.ShowMessage("Элемент не найден");
+                DocumentDialogService.ShowMessage("Элемент не найден");
             }
         }
 
@@ -69,7 +69,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
             catch (DbUpdateConcurrencyException)
             {
-                DefaultDialogService.ShowMessage("Элемент не найден");
+                DocumentDialogService.ShowMessage("Элемент не найден");
             }
         }
     }

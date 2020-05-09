@@ -11,6 +11,7 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             Computer = new Computer()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
                 Price = resourcesBaseModel.Price,
                 IsUsed = resourcesBaseModel.IsUsed,

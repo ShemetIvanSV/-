@@ -19,29 +19,37 @@
             <ColumnDefinition Width="32*"/>
             <ColumnDefinition Width="64*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="1" Grid.RowSpan="5">
-                <ComboBox 
-                ItemsSource="{Binding TableNames}" 
-                SelectedItem="{Binding SelectedTechnicalType}" />
-            <TextBox Text="{Binding ResourcesBaseModel.Title, UpdateSourceTrigger=PropertyChanged}" />
-            <TextBox Text="{Binding ResourcesBaseModel.Price, UpdateSourceTrigger=PropertyChanged}" />
-            <CheckBox IsChecked="{Binding ResourcesBaseModel.IsUsed, UpdateSourceTrigger=PropertyChanged}" Height="24" />
-            <Button Command="{Binding ReadFilePathCommand}" />
-        </StackPanel>
-            <StackPanel Grid.Column="2" Grid.RowSpan="5">
-                <Label Content="Тип элемента" ToolTip="Тип техники который вы хотите создать (Обязательный параметр)"/>
-                <Label Content="Название*" ToolTip="Название техники который вы хотите создать (Обязательный параметр)" />
-                <Label Content="Цена*" ToolTip="Цена техники который вы хотите создать (Обязательный параметр)"/>
-                <Label Content="Используется" ToolTip="Эксплуатируется ли данная техника на предприятии"/>
-                <Label Content="Путь к документу"  ToolTip="Выберите документ для данной техники"/>
+
+
+        <Canvas Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="4">
+            <StackPanel Height="450" Width="145">
+                <ComboBox  Margin="0,0,0,10"
+                    ItemsSource="{Binding TableNames}" 
+                    SelectedItem="{Binding SelectedTechnicalType}" />
+                <TextBox  Margin="0,0,0,10" Text="{Binding ResourcesBaseModel.Title, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox  Margin="0,0,0,10" Text="{Binding ResourcesBaseModel.Price, UpdateSourceTrigger=PropertyChanged}" />
+                <CheckBox Margin="0,0,0,10" IsChecked="{Binding ResourcesBaseModel.IsUsed, UpdateSourceTrigger=PropertyChanged}" Height="24" />
+                <Button Margin="0,0,0,10" Command="{Binding ReadFilePathCommand}" />
+                <Button Margin="0,0,0,10" Command="{Binding ReadPicturePathCommand}" />
             </StackPanel>
-           
-        
+            <StackPanel Height="450" Canvas.Left="145" Width="160">
+                <Label  Margin="0,0,0,10" Content="Тип элемента" ToolTip="Тип техники который вы хотите создать (Обязательный параметр)"/>
+                <Label  Margin="0,0,0,10" Content="Название*" ToolTip="Название техники который вы хотите создать (Обязательный параметр)" />
+                <Label  Margin="0,0,0,10" Content="Цена*" ToolTip="Цена техники который вы хотите создать (Обязательный параметр)"/>
+                <Label  Margin="0,0,0,10" Content="Используется" ToolTip="Эксплуатируется ли данная техника на предприятии"/>
+                <Label  Margin="0,0,0,10" Content="Путь к документу"  ToolTip="Выберите документ для данной техники"/>
+                <Label  Margin="0,0,0,10" Content="Путь к картинке"  ToolTip="Выберите картинку для данной техники"/>
+            </StackPanel>
+
+
+        </Canvas>
+
+
         <Label Content="Описание" Grid.Column="3" HorizontalAlignment="Right" Width="75" Margin="0,6,180,4"/>
         <TextBox Text="{Binding ResourcesBaseModel.Description, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Margin="0,1,10,0" Grid.Row="1"/>
-        <Button Command="{Binding AddCommand}" Content="Добавить" HorizontalAlignment="Left" Margin="320,3,-110,0" VerticalAlignment="Top" Width="110" Grid.Column="3" Height="37" Grid.Row="3" FontSize="12" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold"/>
+        <Button Command="{Binding AddCommand}" Content="Добавить" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top" Width="110" Grid.Column="3" Height="37" Grid.Row="3" FontSize="12" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold"/>
         <GroupBox Header="Id связанного компьютера" HorizontalAlignment="Left" Height="98" Margin="5,8,0,0" VerticalAlignment="Top" Width="195" Grid.Column="3" Grid.Row="2" Grid.RowSpan="2">
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding ComputerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="105"/>
-    </GroupBox>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding ComputerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="105"/>
+        </GroupBox>
     </Grid>
 </UserControl>

@@ -3,19 +3,19 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
 using Учёт_Технических_Ресурсов.CommandService;
+using Учёт_Технических_Ресурсов.DialogService;
 using Учёт_Технических_Ресурсов.Model.Users;
 using Учёт_Технических_Ресурсов.Views;
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {
-    class LoginPageVM : BaseViewModel
+    class LoginWindowVM : BaseViewModel
     {
         private ICommand validationCommand;
         private User currentUser;
-        private readonly Action close;
-        public LoginPageVM(Action close)
+
+        public LoginWindowVM()
         {
-            this.close = close;
             CurrentUser = new User();
             UsersReturn();
         }
@@ -55,7 +55,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                         {
                             MainWindow mainWindow = new MainWindow();
                             mainWindow.Show();
-                            this.close();
+                            Application.Current.MainWindow.Close();
                             return;
                         }
                         MessageBox.Show("Неверное имя пользователя или пароль");
@@ -78,6 +78,10 @@ namespace Учёт_Технических_Ресурсов.ViewModel
         private bool UserValidation(User user)
         {
             bool isValid = false;
+
+            if (user.Password == "")
+                user.Password = null;
+
             foreach (var userDb in Users)
             {
                 if (user.Login == userDb.Login && user.Password == userDb.Password)

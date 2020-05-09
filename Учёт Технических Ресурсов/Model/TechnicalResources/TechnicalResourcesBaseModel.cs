@@ -10,6 +10,7 @@ namespace Учёт_Технических_Ресурсов.Model
         private DateTime dateOfCreate = DateTime.Now;
         private string description;
         private string document;
+        private string picture;
         private int id;
         private bool isUsed;
         private int price;
@@ -82,6 +83,16 @@ namespace Учёт_Технических_Ресурсов.Model
             set
             {
                 document = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string PicturePath
+        {
+            get => picture;
+            set
+            {
+                picture = value;
                 OnPropertyChanged();
             }
         }

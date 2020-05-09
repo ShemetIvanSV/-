@@ -79,8 +79,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DialogService\DefaultDialogService.cs" />
+    <Compile Include="DialogService\DocumentDialogService.cs" />
     <Compile Include="DialogService\IDialogService.cs" />
+    <Compile Include="DialogService\PictureDialogService.cs" />
     <Compile Include="EnumService\EnumItemSource.cs" />
     <Compile Include="EquipmentDbRepository\ApplicationRepository.cs" />
     <Compile Include="EquipmentDbRepository\ComputerRepository.cs" />
@@ -91,11 +92,26 @@
     <Compile Include="EquipmentDbRepository\OperatingSystemRepository.cs" />
     <Compile Include="EquipmentDbRepository\PrinterRepository.cs" />
     <Compile Include="EquipmentDbRepository\RumRepository.cs" />
+    <Compile Include="Pages\ApplicationPrograms.xaml.cs">
+      <DependentUpon>ApplicationPrograms.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CPUs.xaml.cs">
       <DependentUpon>CPUs.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Monitors.xaml.cs">
       <DependentUpon>Monitors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Motherboards.xaml.cs">
+      <DependentUpon>Motherboards.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OperatingSystems.xaml.cs">
+      <DependentUpon>OperatingSystems.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Printers.xaml.cs">
+      <DependentUpon>Printers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RUMs.xaml.cs">
+      <DependentUpon>RUMs.xaml</DependentUpon>
     </Compile>
     <Compile Include="TechnicalCreator\CreateApp.cs" />
     <Compile Include="TechnicalCreator\CreateComputer.cs" />
@@ -117,10 +133,10 @@
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddDataVM.cs" />
-    <Compile Include="ViewModel\ApplicationProgrammsVM.cs" />
+    <Compile Include="ViewModel\ApplicationProgramsVM.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\CPUsVM.cs" />
-    <Compile Include="ViewModel\LoginPageVM.cs" />
+    <Compile Include="ViewModel\LoginWindowVM.cs" />
     <Compile Include="ViewModel\MotherboardsVM.cs" />
     <Compile Include="ViewModel\NavigateVM.cs" />
     <Compile Include="ViewModel\ComputersVM.cs" />
@@ -132,7 +148,27 @@
     <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
+    <Page Include="Pages\ApplicationPrograms.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Monitors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Motherboards.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OperatingSystems.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Printers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RUMs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

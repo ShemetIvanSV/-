@@ -18,6 +18,16 @@ namespace Учёт_Технических_Ресурсов.ViewModel
         private ICommand saveChangeCommand;
         private BaseViewModel viewModelNavigation;
 
+        public PrintingTechnology SelectedPrinting
+        {
+            get => SelectedEquipment.PrintingTechnology;
+            set
+            {
+                SelectedEquipment.PrintingTechnology = value;
+                OnPropertyChanged();
+            }
+        }
+
         public BaseViewModel ViewModelNavigation
         {
             get => viewModelNavigation;
@@ -44,7 +54,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                    }
                                                    catch
                                                    {
-                                                       DefaultDialogService.ShowMessage("Документ отсутствует");
+                                                       DocumentDialogService.ShowMessage("Документ отсутствует");
                                                    }
                                                }));
     }

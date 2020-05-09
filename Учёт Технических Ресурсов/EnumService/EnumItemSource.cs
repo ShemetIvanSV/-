@@ -13,48 +13,48 @@ namespace Учёт_Технических_Ресурсов.EnumService
 {
     class EnumItemSource : Collection<string>, IValueConverter
     {
-        private Type type;
-        private IDictionary<Object, Object> valueToNameMap;
-        private IDictionary<Object, Object> nameToValueMap;
+        Type type;
+        IDictionary<Object, Object> valueToNameMap;
+        IDictionary<Object, Object> nameToValueMap;
 
         public Type Type
         {
-            get => type;
+            get { return this.type; }
             set
             {
-                if(!value.IsEnum)
-                    throw new ArgumentException("Type is not an enum");
-                type = value;
+                if (!value.IsEnum)
+                    throw new ArgumentException("Type is not an enum.", "value");
+                this.type = value;
                 Initialize();
             }
         }
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
-            return valueToNameMap[value];
+            return ((Enum) value).ToString();
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture)
         {
-            return nameToValueMap[value];
+            return this.nameToValueMap[value];
         }
 
-        private void Initialize()
+        void Initialize()
         {
-            valueToNameMap = type
+            this.valueToNameMap = this.type
                 .GetFields(BindingFlags.Static | BindingFlags.Public)
                 .ToDictionary(fi => fi.GetValue(null), GetDescription);
-            nameToValueMap = valueToNameMap
+            this.nameToValueMap = this.valueToNameMap
                 .ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
             Clear();
-            foreach (string name in nameToValueMap.Keys)
+            foreach (String name in this.nameToValueMap.Keys)
                 Add(name);
         }
 
         static Object GetDescription(FieldInfo fieldInfo)
         {
             var descriptionAttribute =
-                (DescriptionAttribute) Attribute.GetCustomAttribute(fieldInfo, typeof(DescriptionAttribute));
+                (DescriptionAttribute)Attribute.GetCustomAttribute(fieldInfo, typeof(DescriptionAttribute));
             return descriptionAttribute != null ? descriptionAttribute.Description : fieldInfo.Name;
         }
     }

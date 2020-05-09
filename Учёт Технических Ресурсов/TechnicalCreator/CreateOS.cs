@@ -11,6 +11,7 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             OperatingSystem = new OperatingSystem()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
                 ComputerId = (int)this.ComputerId,
                 Price = this.Price,

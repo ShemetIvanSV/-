@@ -18,6 +18,21 @@
             <DataTemplate DataType="{x:Type vm:MonitorsVM}">
                 <page:Monitors/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:ApplicationProgramsVM}">
+                <page:ApplicationPrograms/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:PrintersVM}">
+                <page:Printers/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:MotherboardsVM}">
+                <page:Motherboards/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:OperatingSystemsVM}">
+                <page:OperatingSystems/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:RUMsVM}">
+                <page:RUMs/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:ComputersVM}">
                 <page:Computers/>
             </DataTemplate>

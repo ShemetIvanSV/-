@@ -3,14 +3,15 @@ using System.Windows;
 
 namespace Учёт_Технических_Ресурсов.DialogService
 {
-    public class DefaultDialogService : IDialogService
+    public class DocumentDialogService : IDialogService
     {
         public string FilePath { get; set; }
 
         public bool OpenFileDialog()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == true)
+            openFileDialog.Filter = "Office Files|*.doc;*.xls;*.ppt";
+            if (openFileDialog.ShowDialog() == true)
             {
                 FilePath = openFileDialog.FileName;
                 return true;

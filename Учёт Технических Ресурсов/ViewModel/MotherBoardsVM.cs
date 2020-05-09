@@ -44,7 +44,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                    }
                                                    catch
                                                    {
-                                                       DefaultDialogService.ShowMessage("Документ отсутствует");
+                                                       DocumentDialogService.ShowMessage("Документ отсутствует");
                                                    }
                                                }));
     }

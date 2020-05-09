@@ -10,6 +10,7 @@ namespace Учёт_Технических_Ресурсов
         {
             RUM = new RUM()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
                 ComputerId = this.ComputerId,
                 Price = this.Price,

@@ -10,7 +10,9 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
         {
             Printer = new Printer()
             {
+                PicturePath = this.PicturePath,
                 DocumentPath = this.DocumentPath,
+                ComputerId = (int)computerId,
                 Price = this.Price,
                 IsUsed = this.IsUsed,
                 Description = this.Description,

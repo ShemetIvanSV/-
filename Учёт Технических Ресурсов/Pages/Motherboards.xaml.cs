@@ -10,17 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Учёт_Технических_Ресурсов.ViewModel;
 
-namespace Учёт_Технических_Ресурсов.Views
+namespace Учёт_Технических_Ресурсов.Pages
 {
-    public partial class Login : Window
+    /// <summary>
+    /// Логика взаимодействия для Motherboards.xaml
+    /// </summary>
+    public partial class Motherboards : UserControl
     {
-        public Login()
+        public Motherboards()
         {
             InitializeComponent();
-            DataContext = new  LoginWindowVM();
         }
     }
 }

@@ -5,13 +5,9 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
 {
     public enum TypeMatrix
     {
-        [Description("IPS")]
         IPS,
-        [Description("PLS")]
         PLS,
-        [Description("TNF")]
         TNF,
-        [Description("OLED")]
         OLED
     }
 

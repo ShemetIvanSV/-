@@ -9,7 +9,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
     public class ComputersVM : TablePageBaseVM<Computer,ComputerRepository>
     {
         private ICommand saveChangeCommand;
-        private ICommand removeComputerCommand;
+        private ICommand removeCommand;
         private ICommand openDocumentCommand;
         private BaseViewModel viewModelNavigation;
 
@@ -29,8 +29,8 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                      EquipmentsSaveChange();
                  }));
 
-        public ICommand RemoveComputerCommand => removeComputerCommand ??
-                 (removeComputerCommand = new RelayCommand(obj =>
+        public ICommand RemoveCommand => removeCommand ??
+                 (removeCommand = new RelayCommand(obj =>
                  {
                      EquipmentsRemove();
                  }));
@@ -45,7 +45,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
              }
              catch
              {
-                 DefaultDialogService.ShowMessage("Документ отсутствует");
+                 DocumentDialogService.ShowMessage("Документ отсутствует");
              }
          }));
     }
