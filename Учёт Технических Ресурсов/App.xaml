@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Учёт_Технических_Ресурсов"
              xmlns:vm="clr-namespace:Учёт_Технических_Ресурсов.ViewModel"
-              xmlns:v="clr-namespace:Учёт_Технических_Ресурсов.Views"
              xmlns:page="clr-namespace:Учёт_Технических_Ресурсов.Pages"
              StartupUri="Views/login.xaml">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,6 +14,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+                <ResourceDictionary x:Name="AddIcon" Source="pack://application:,,,/Resources/add.xaml"/>
+                <ResourceDictionary x:Name="DeleteIcon" Source="pack://application:,,,/Resources/Delete.xaml"/>
+                <ResourceDictionary x:Name="SaveIcon" Source="pack://application:,,,/Resources/Save.xaml"/>
+                <ResourceDictionary x:Name="OkIcon" Source="pack://application:,,,/Resources/Ok.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type vm:MonitorsVM}">
                 <page:Monitors/>

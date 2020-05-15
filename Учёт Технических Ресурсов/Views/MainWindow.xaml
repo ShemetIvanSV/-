@@ -10,26 +10,27 @@
         MinWidth="1008" 
         WindowState="Maximized" 
         WindowStartupLocation="CenterOwner" 
-        Width="899">
+        Width="1009" Height="561">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="475*" />
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="39*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="32*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="130*"/>
             <ColumnDefinition Width="28*"/>
         </Grid.ColumnDefinitions>
         <ContentControl 
             Content="{Binding ViewModelNavigation}"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Grid.Column="2" 
-            Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,0,0,43"/>
-        <StackPanel  Grid.Column="0" Grid.Row="0" >
+
+            Grid.Column="3" 
+            Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <StackPanel  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,220" >
             <Button 
                 Command="{Binding DataContext.OpenComputersViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}"
                 Content="Компьютеры" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold"/>
@@ -54,23 +55,20 @@
             <Button 
                 Command="{Binding DataContext.OpenMotherboardsViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
                 Content="Материнские платы" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold"/>
-            <Expander Header="Запросы" Height="237">
-                <Grid Background="#FFE5E5E5" Height="47">
-                    <Button 
-                Command="{Binding DataContext.OpenComputersViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
-                Content="Показать всю технику прибывшую сегодня" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold"/>
-                    <Button 
-                Command="{Binding DataContext.OpenComputersViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
-                Content="Показать всю используемую технику" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold" Margin="0,-52,0,52"/>
-                    <Button 
-                Command="{Binding DataContext.OpenComputersViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
-                Content="Показать всю неиспользуемую технику" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold" Margin="0,52,0,-52" FontSize="9"/>
-                </Grid>
-            </Expander>
         </StackPanel>
 
-        <Button Grid.Row="1"
-            Command="{Binding DataContext.OpenAddViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
-            Content="Добавить технику" HorizontalAlignment="Right" Width="195" Height="46" VerticalAlignment="Top" />
+        <Button  Grid.Row="2"
+                 Grid.Column="0"
+                 Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}"
+                 Command="{Binding DataContext.OpenAddViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" >
+            <Image Source="{StaticResource ui__1_DrawingImage}"/>
+        </Button>
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               Content="Добавить технику"/>
+        <Button 
+            Command="{Binding DataContext.OpenNavigateViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
+            Content="Просмотр по датам" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold" Grid.ColumnSpan="2" Grid.Row="1"/>
+        <Border BorderBrush="#FF007ACC" BorderThickness="10" Grid.Column="2"  Grid.RowSpan="9"/>
     </Grid>
 </mah:MetroWindow>

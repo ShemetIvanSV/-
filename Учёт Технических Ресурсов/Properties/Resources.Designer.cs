@@ -69,15 +69,5 @@ namespace Учёт_Технических_Ресурсов.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Icon, аналогичного (Значок).
-        /// </summary>
-        internal static System.Drawing.Icon technical_support_2_icon_icons_com_528111 {
-            get {
-                object obj = ResourceManager.GetObject("technical_support_2_icon_icons_com_528111", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }

@@ -53,6 +53,13 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                         CurrentUser.Login = CurrentLogin;
                         if (UserValidation(CurrentUser))
                         {
+                            if(CurrentUser.Login == "Admin")
+                            {
+                                Registration registration = new Registration();
+                                registration.Show();
+                                Application.Current.MainWindow.Close();
+                                return;
+                            }
                             MainWindow mainWindow = new MainWindow();
                             mainWindow.Show();
                             Application.Current.MainWindow.Close();

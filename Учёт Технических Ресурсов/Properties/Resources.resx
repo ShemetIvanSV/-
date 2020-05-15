@@ -121,7 +121,4 @@
   <data name="OpenSans_Semibold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\OpenSans-Semibold.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="technical_support_2_icon_icons_com_528111" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\technical-support-2_icon-icons.com_52811.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

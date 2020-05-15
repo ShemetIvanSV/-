@@ -7,7 +7,7 @@ namespace Учёт_Технических_Ресурсов.Model
 {
     public abstract class TechnicalResourcesBaseModel : INotifyPropertyChanged
     {
-        private DateTime dateOfCreate = DateTime.Now;
+        private DateTime dateOfCreate = DateTime.Now.Date;
         private string description;
         private string document;
         private string picture;
