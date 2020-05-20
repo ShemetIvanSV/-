@@ -41,7 +41,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Command="{Binding Path=DataContext.OpenDocumentCommand, 
-                             RelativeSource={RelativeSource AncestorType={x:Type local:ApplicationPrograms} }}"/>
+                             RelativeSource={RelativeSource AncestorType={x:Type local:RUMs} }}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

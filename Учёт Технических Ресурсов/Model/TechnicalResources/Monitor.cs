@@ -16,7 +16,6 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
         private Computer computer;
         private int? computerId;
         private TypeMatrix matrix;
-        private int? monitorResolution;
 
         public int? ComputerId
         {
@@ -34,16 +33,6 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
             set
             {
                 matrix = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int? MonitorResolution
-        {
-            get => monitorResolution;
-            set
-            {
-                monitorResolution = value;
                 OnPropertyChanged();
             }
         }

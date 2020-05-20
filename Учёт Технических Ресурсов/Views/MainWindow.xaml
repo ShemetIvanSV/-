@@ -69,6 +69,6 @@
         <Button 
             Command="{Binding DataContext.OpenNavigateViewCommand, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type local:MainWindow}}}" 
             Content="Просмотр по датам" FontFamily="/Учёт Технических Ресурсов;component/Resources/#Open Sans Semibold" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <Border BorderBrush="#FF007ACC" BorderThickness="10" Grid.Column="2"  Grid.RowSpan="9"/>
+        <Border BorderBrush="#FF41B1E1" BorderThickness="10" Grid.Column="2"  Grid.RowSpan="9"/>
     </Grid>
 </mah:MetroWindow>

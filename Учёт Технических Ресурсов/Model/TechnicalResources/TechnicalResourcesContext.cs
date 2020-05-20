@@ -7,7 +7,11 @@ namespace Учёт_Технических_Ресурсов.Model.EquipmentModel
 {
     class TechnicalResourcesContext : DbContext
     {
-        public TechnicalResourcesContext() : base("TechnicalResourcesDB") { }
+        static TechnicalResourcesContext()
+        {
+            Database.SetInitializer(new TechnicalInitializer());
+        }
+        public TechnicalResourcesContext() : base("TechnicalResourcesDataBase") { }
         public DbSet<Monitor> Monitors { get; set; }
         public DbSet<Computer> Computers { get; set; }
         public DbSet<Printer> Printers { get; set; }

@@ -28,7 +28,7 @@
             Grid.ColumnSpan="5"
             AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Id" Binding="{Binding ComputerId}"/>
                 <mah:DataGridNumericUpDownColumn 
                     Header="Цена"
                     Binding="{Binding Price}"
@@ -42,7 +42,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Command="{Binding Path=DataContext.OpenDocumentCommand, 
-                             RelativeSource={RelativeSource AncestorType={x:Type local:ApplicationPrograms} }}"/>
+                             RelativeSource={RelativeSource AncestorType={x:Type local:Motherboards} }}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

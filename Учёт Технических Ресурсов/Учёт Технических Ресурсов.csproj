@@ -92,6 +92,8 @@
     <Compile Include="EquipmentDbRepository\OperatingSystemRepository.cs" />
     <Compile Include="EquipmentDbRepository\PrinterRepository.cs" />
     <Compile Include="EquipmentDbRepository\RumRepository.cs" />
+    <Compile Include="Model\TechnicalInitializer.cs" />
+    <Compile Include="Model\UsersInitializer.cs" />
     <Compile Include="Pages\ApplicationPrograms.xaml.cs">
       <DependentUpon>ApplicationPrograms.xaml</DependentUpon>
     </Compile>
@@ -272,6 +274,45 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\technical-support-2_icon-icons.com_52811 %281%29.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1188115_v01_s.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Asus.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dell.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HP.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Acer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Lenovo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Mac.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\MSI.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\2.jpg" />
+    <Resource Include="Resources\3.png" />
+    <Resource Include="Resources\4.jpg" />
+    <Resource Include="Resources\6.jpg" />
+    <Resource Include="Resources\7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\p1.jpg" />
+    <Resource Include="Resources\p2.jpg" />
+    <Resource Include="Resources\p3.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

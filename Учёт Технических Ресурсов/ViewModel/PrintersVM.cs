@@ -49,8 +49,8 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                {
                                                    try
                                                    {
-                                                       string path = SelectedEquipment.DocumentPath;
-                                                       Process.Start(path);
+                                                       var path = SelectedEquipment.DocumentPath;
+                                                       Process.Start(@path);
                                                    }
                                                    catch
                                                    {

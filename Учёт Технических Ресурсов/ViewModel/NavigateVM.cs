@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Учёт_Технических_Ресурсов.CommandService;
 using Учёт_Технических_Ресурсов.Model;
@@ -61,9 +62,14 @@ namespace Учёт_Технических_Ресурсов.ViewModel
 
             TechnicalResources = new ObservableCollection<TechnicalResourcesBaseModel>();
 
+            InitializeData();
+        }
+
+        private async void InitializeData()
+        {
             using (var technicaldb = new TechnicalResourcesContext())
             {
-                technicaldb.Database.Initialize(true);
+                await Task.Run(() => technicaldb.Database.Initialize(true));
             }
         }
 

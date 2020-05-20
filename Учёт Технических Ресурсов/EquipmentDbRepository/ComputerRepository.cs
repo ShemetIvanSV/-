@@ -30,7 +30,8 @@ namespace Учёт_Технических_Ресурсов.EquipmentDbRepository
                                                      .Include(c => c.Motherboard)
                                                      .Include(c => c.OperatingSystem)
                                                      .Include(c => c.ApplicationPrograms)
-                                                     .Include(c => c.RUM);
+                                                     .Include(c => c.RUM)
+                                                     .Include(c => c.Printer);
             return computers;
         }
 
