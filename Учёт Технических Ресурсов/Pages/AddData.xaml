@@ -27,8 +27,8 @@
         <Canvas Grid.ColumnSpan="2" Grid.Column="1" Grid.RowSpan="5">
             <StackPanel  Height="205" Width="320" Canvas.Left="-175">
                 <ComboBox  Margin="0,0,0,10"
-                    ItemsSource="{Binding TableNames}" 
-                    SelectedItem="{Binding SelectedTechnicalType}" />
+                    ItemsSource="{Binding Technicals}" 
+                    SelectedItem="{Binding SelectedAddTechnical}" />
                 <TextBox mah:TextBoxHelper.Watermark="Название"  Margin="0,0,0,10" Text="{Binding ResourcesBaseModel.Title, UpdateSourceTrigger=PropertyChanged}" />
                 <TextBox mah:TextBoxHelper.Watermark="Цена$" Margin="0,0,0,10" Text="{Binding ResourcesBaseModel.Price, UpdateSourceTrigger=PropertyChanged}" />
                 <CheckBox Margin="0,0,0,10" IsChecked="{Binding ResourcesBaseModel.IsUsed, UpdateSourceTrigger=PropertyChanged}" Height="24" />

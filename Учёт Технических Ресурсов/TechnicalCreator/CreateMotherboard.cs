@@ -6,31 +6,30 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreateMotherboard : AddTechnical
     {
-        public CreateMotherboard(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-       : base(ResourcesBaseModel, computerId)
+
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            Motherboard = new Motherboard()
+            var motherboard = new Motherboard()
             {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
-                ComputerId = (int)this.ComputerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                ComputerId = (int)computerId,
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
 
-        public Motherboard Motherboard { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
-                context.Motherboards.Add(Motherboard);
+                context.Motherboards.Add(motherboard);
                 context.SaveChanges();
-                return Motherboard;
             }
+        }
+        public override string ToString()
+        {
+            return "Создать Материнскую плату";
         }
     }
 }

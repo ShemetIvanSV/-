@@ -124,7 +124,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                            UsersReturn();
                                                        }
                                                    }
-                                                   catch (Exception e)
+                                                   catch
                                                    {
                                                        
                                                    }

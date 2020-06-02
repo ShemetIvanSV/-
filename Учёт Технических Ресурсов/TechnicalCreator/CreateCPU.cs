@@ -6,31 +6,30 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreateCPU : AddTechnical
     {
-        public CreateCPU(TechnicalResourcesBaseModel resourcesBaseModel, int? computerId)
-       : base(resourcesBaseModel, computerId)
+
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            CPU = new CPU()
+            var CPU = new CPU()
             {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
                 ComputerId = (int)computerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
 
-        public CPU CPU { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
                 context.CPUs.Add(CPU);
                 context.SaveChanges();
-                return CPU;
             }
+        }
+        public override string ToString()
+        {
+            return "Создать CPU";
         }
     }
 }

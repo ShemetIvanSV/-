@@ -5,31 +5,29 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreatePrinter : AddTechnical
     {
-        public CreatePrinter(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-       : base(ResourcesBaseModel, computerId)
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            Printer = new Printer()
+            var printer = new Printer()
             {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
                 ComputerId = (int)computerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
-
-        public Printer Printer { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
-                context.Printers.Add(Printer);
+                context.Printers.Add(printer);
                 context.SaveChanges();
-                return Printer;
             }
         }
+        public override string ToString()
+        {
+            return "Создать Принтер";
+        }
     }
+
 }

@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace Учёт_Технических_Ресурсов.Model
 {
-    public abstract class TechnicalResourcesBaseModel : INotifyPropertyChanged
+    public class TechnicalResourcesBaseModel : INotifyPropertyChanged
     {
         private DateTime dateOfCreate = DateTime.Now.Date;
         private string description;
@@ -16,7 +16,7 @@ namespace Учёт_Технических_Ресурсов.Model
         private int price;
         private string title;
 
-        public virtual int Id
+        public int Id
         {
             get => id;
             set

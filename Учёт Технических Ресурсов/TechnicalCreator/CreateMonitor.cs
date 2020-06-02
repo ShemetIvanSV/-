@@ -10,31 +10,30 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreateMonitor : AddTechnical
     {
-        public CreateMonitor(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-       : base(ResourcesBaseModel, computerId)
+
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            Monitor = new Monitor()
+            var monitor = new Monitor()
             {
-                PicturePath = this.PicturePath,
-                ComputerId = this.ComputerId,
-                DocumentPath = this.DocumentPath,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                ComputerId = computerId,
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
 
-        public Monitor Monitor { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
-                context.Monitors.Add(Monitor);
+                context.Monitors.Add(monitor);
                 context.SaveChanges();
-                return Monitor;
             }
+        }
+        public override string ToString()
+        {
+            return "Создать Монитор";
         }
     }
 }

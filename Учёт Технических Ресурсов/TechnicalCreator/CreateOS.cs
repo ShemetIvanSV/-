@@ -6,31 +6,30 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreateOS : AddTechnical
     {
-        public CreateOS(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-       : base(ResourcesBaseModel, computerId)
+
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            OperatingSystem = new OperatingSystem()
+            var operatingSystem = new OperatingSystem()
             {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
-                ComputerId = (int)this.ComputerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                ComputerId = (int)computerId,
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
 
-        public OperatingSystem OperatingSystem { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
-                context.OperatingSystems.Add(OperatingSystem);
+                context.OperatingSystems.Add(operatingSystem);
                 context.SaveChanges();
-                return OperatingSystem;
             }
+        }
+        public override string ToString()
+        {
+            return "Создать ОС";
         }
     }
 }

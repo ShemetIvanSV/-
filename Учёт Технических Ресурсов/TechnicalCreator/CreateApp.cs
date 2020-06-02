@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Учёт_Технических_Ресурсов.Model;
+﻿using Учёт_Технических_Ресурсов.Model;
 using Учёт_Технических_Ресурсов.Model.EquipmentModel;
 using Учёт_Технических_Ресурсов.Model.TechnicalResources.ProgramsModel;
 
@@ -11,30 +6,31 @@ namespace Учёт_Технических_Ресурсов.TechnicalCreator
 {
     class CreateApp:AddTechnical
     {
-        public CreateApp(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-: base(ResourcesBaseModel,computerId)
-        {
-            ApplicationProgram = new ApplicationProgram()
-            {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
-                ComputerId = this.ComputerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
-            };
-        }
 
-        public ApplicationProgram ApplicationProgram { get; set; }
-        public override TechnicalResourcesBaseModel CreateTechnical()
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
+            var applicationProgram = new ApplicationProgram()
+            {
+                ComputerId = computerId,
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
+            };
+
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
-                context.ApplicationPrograms.Add(ApplicationProgram);
+                context.ApplicationPrograms.Add(applicationProgram);
                 context.SaveChanges();
-                return ApplicationProgram;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Создать ПО";
         }
     }
 }

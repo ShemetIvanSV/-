@@ -1,15 +1,14 @@
 ﻿using System.Collections.ObjectModel;
 using System.Data.Entity.Infrastructure;
 using Учёт_Технических_Ресурсов.DialogService;
-using Учёт_Технических_Ресурсов.EnumService;
 using Учёт_Технических_Ресурсов.EquipmentDbRepository;
 using Учёт_Технических_Ресурсов.Model;
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {
     public abstract class TablePageBaseVM<T, R> : BaseViewModel
-        where T : TechnicalResourcesBaseModel, new()
-        where R : IEquipmentRepository<T>, new()
+                    where T : TechnicalResourcesBaseModel, new()
+                    where R : IEquipmentRepository<T>, new()
     {
         private T selectedEquipment;
 
@@ -22,11 +21,11 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             EquipmentsReturn();
         }
 
-        protected DocumentDialogService DocumentDialogService { get; set; }
+        protected DocumentDialogService DocumentDialogService { get; }
 
-        protected IEquipmentRepository<T> EqipmentRepository { get; set; }
+        private IEquipmentRepository<T> EqipmentRepository { get; }
 
-        public ObservableCollection<T> EquipmentsView { get; set; }
+        public ObservableCollection<T> EquipmentsView { get; }
 
         public T SelectedEquipment
         {
@@ -38,7 +37,7 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             }
         }
 
-        protected void EquipmentsReturn()
+        private void EquipmentsReturn()
         {
             EquipmentsView.Clear();
             var equipments = EqipmentRepository.Return();

@@ -4,35 +4,6 @@ namespace Учёт_Технических_Ресурсов
 {
     abstract class AddTechnical
     {
-        public int? ComputerId { get; set; }
-        public int Price { get; set; }
-        public bool IsUsed { get; set; }
-        public string Description { get; set; }
-        public string Title { get; set; }
-        public string DocumentPath { get; set; }
-        public string PicturePath { get; set; }
-
-        public AddTechnical(TechnicalResourcesBaseModel model, int? computerId)
-        {
-            PicturePath = model.PicturePath;
-            DocumentPath = model.DocumentPath; 
-            Price = model.Price;
-            IsUsed = model.IsUsed;
-            Description = model.Description;
-            Title = model.Title;
-            ComputerId = computerId;
-        }
-
-        public AddTechnical(TechnicalResourcesBaseModel model)
-        {
-            PicturePath = model.PicturePath;
-            DocumentPath = model.DocumentPath;
-            Price = model.Price;
-            IsUsed = model.IsUsed;
-            Description = model.Description;
-            Title = model.Title;
-        }
-
-        abstract public TechnicalResourcesBaseModel CreateTechnical();
+        public abstract void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId);
     }
 }

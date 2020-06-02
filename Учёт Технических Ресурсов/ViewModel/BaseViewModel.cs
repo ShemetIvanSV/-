@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Data;
-using System.Windows.Input;
-using Учёт_Технических_Ресурсов.CommandService;
-using Учёт_Технических_Ресурсов.Model;
-using Учёт_Технических_Ресурсов.Model.EquipmentModel;
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {

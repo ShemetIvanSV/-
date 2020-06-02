@@ -5,31 +5,31 @@ namespace Учёт_Технических_Ресурсов
 {
     class CreateRUM : AddTechnical
     {
-        public CreateRUM(TechnicalResourcesBaseModel ResourcesBaseModel, int? computerId)
-       : base(ResourcesBaseModel, computerId)
+
+        public override void CreateTechnical(TechnicalResourcesBaseModel model, int? computerId)
         {
-            RUM = new RUM()
+            var RUM = new RUM()
             {
-                PicturePath = this.PicturePath,
-                DocumentPath = this.DocumentPath,
-                ComputerId = this.ComputerId,
-                Price = this.Price,
-                IsUsed = this.IsUsed,
-                Description = this.Description,
-                Title = this.Title
+                ComputerId = computerId,
+                Description = model.Description,
+                DocumentPath = model.DocumentPath,
+                PicturePath = model.PicturePath,
+                Id = model.Id,
+                IsUsed = model.IsUsed,
+                Price = model.Price,
+                Title = model.Title
             };
-        }
 
-        public RUM RUM { get; set; }
-
-        public override TechnicalResourcesBaseModel CreateTechnical()
-        {
             using (TechnicalResourcesContext context = new TechnicalResourcesContext())
             {
                 context.RUMs.Add(RUM);
                 context.SaveChanges();
-                return RUM;
             }
+        }
+
+        public override string ToString()
+        {
+            return "Создать Оперативную память";
         }
     }
 }

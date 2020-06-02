@@ -5,8 +5,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace Учёт_Технических_Ресурсов.EnumService
@@ -14,8 +12,8 @@ namespace Учёт_Технических_Ресурсов.EnumService
     class EnumItemSource : Collection<string>, IValueConverter
     {
         Type type;
-        IDictionary<Object, Object> valueToNameMap;
-        IDictionary<Object, Object> nameToValueMap;
+        IDictionary<object, object> valueToNameMap;
+        IDictionary<object, object> nameToValueMap;
 
         public Type Type
         {
@@ -29,12 +27,12 @@ namespace Учёт_Технических_Ресурсов.EnumService
             }
         }
 
-        public Object Convert(Object value, Type targetType, Object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return ((Enum) value).ToString();
         }
 
-        public Object ConvertBack(Object value, Type targetType, Object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return this.nameToValueMap[value];
         }
@@ -51,7 +49,7 @@ namespace Учёт_Технических_Ресурсов.EnumService
                 Add(name);
         }
 
-        static Object GetDescription(FieldInfo fieldInfo)
+        static object GetDescription(FieldInfo fieldInfo)
         {
             var descriptionAttribute =
                 (DescriptionAttribute)Attribute.GetCustomAttribute(fieldInfo, typeof(DescriptionAttribute));

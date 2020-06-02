@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
@@ -11,18 +12,6 @@ using Учёт_Технических_Ресурсов.TechnicalCreator;
 
 namespace Учёт_Технических_Ресурсов.ViewModel
 {
-    public enum TechnicalTypes
-    {
-        Компьютер,
-        Монитор,
-        Материнская_плата,
-        CPU,
-        RUM,
-        Принтер,
-        Операционная_система,
-        Программное_обеспечение
-    }
-
     internal class AddDataVM : BaseViewModel
     {
         private ICommand addCommand;
@@ -30,15 +19,16 @@ namespace Учёт_Технических_Ресурсов.ViewModel
         private ICommand readFilePathCommand;
         private ICommand readPicturePathCommand;
         private TechnicalResourcesBaseModel resourcesBaseModel;
-        private TechnicalTypes selectedTechnicalTypes;
+        private AddTechnical selectedAddAddTechnical;
         private BaseViewModel viewModelNavigation;
 
         public AddDataVM()
         {
-            ResourcesBaseModel = new Computer();
-            TableNames = new ObservableCollection<object>();
+            ResourcesBaseModel = new TechnicalResourcesBaseModel();
+
             ViewModelNavigation = this;
-            ReturnToTypes(TableNames);
+
+            ReturnToTypes(Technicals);
         }
 
         public int? ComputerId
@@ -51,8 +41,11 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             }
         }
 
-        private DocumentDialogService DocumentDialogService { get; } = new DocumentDialogService();
-        private PictureDialogService PictureDialogService { get; } = new PictureDialogService();
+        private DocumentDialogService DocumentDialogService { get; }
+            = new DocumentDialogService();
+
+        private PictureDialogService PictureDialogService { get; }
+            = new PictureDialogService();
 
         public BaseViewModel ViewModelNavigation
         {
@@ -74,22 +67,24 @@ namespace Учёт_Технических_Ресурсов.ViewModel
             }
         }
 
-        public TechnicalTypes SelectedTechnicalType
+        public AddTechnical SelectedAddTechnical
         {
-            get => selectedTechnicalTypes;
+            get => selectedAddAddTechnical;
             set
             {
-                selectedTechnicalTypes = value;
+                selectedAddAddTechnical = value;
                 OnPropertyChanged();
             }
         }
 
-        private AddTechnical AddTechnical { get; set; }
-
-        public ObservableCollection<object> TableNames { get; set; }
+        public ObservableCollection<AddTechnical> Technicals { get; }
+            = new ObservableCollection<AddTechnical>();
 
         public ICommand AddCommand => addCommand ??
-                                      (addCommand = new RelayCommand(obj => { TechnicalCreating(); }));
+                                      (addCommand = new RelayCommand(obj =>
+                                      {
+                                          TechnicalCreating(SelectedAddTechnical, ResourcesBaseModel);
+                                      }));
 
         public ICommand ReadFilePathCommand => readFilePathCommand ??
                                                (readFilePathCommand = new RelayCommand(obj =>
@@ -97,55 +92,36 @@ namespace Учёт_Технических_Ресурсов.ViewModel
                                                    DocumentDialogService.OpenFileDialog();
                                                    ResourcesBaseModel.DocumentPath = DocumentDialogService.FilePath;
                                                }));
+
         public ICommand ReadPicturePathCommand => readPicturePathCommand ??
-                                               (readPicturePathCommand = new RelayCommand(obj =>
-                                               {
-                                                   PictureDialogService.OpenFileDialog();
-                                                   ResourcesBaseModel.PicturePath = PictureDialogService.FilePath;
-                                               }));
+                                                  (readPicturePathCommand = new RelayCommand(obj =>
+                                                  {
+                                                      PictureDialogService.OpenFileDialog();
+                                                      ResourcesBaseModel.PicturePath = PictureDialogService.FilePath;
+                                                  }));
 
-        private void ReturnToTypes(ObservableCollection<object> collection)
+        private void ReturnToTypes(ObservableCollection<AddTechnical> addTechnicals)
         {
-            var tableNames = new TechnicalTypes();
+            var adds = new List<AddTechnical>
+            {
+                new CreateApp(),
+                new CreateCPU(),
+                new CreateComputer(),
+                new CreateMonitor(),
+                new CreateMotherboard(),
+                new CreateOS(),
+                new CreatePrinter(),
+                new CreateRUM()
+            };
 
-            var technicalNames = Enum.GetValues(tableNames.GetType());
-
-            foreach (var t in technicalNames) collection.Add(t);
+            foreach (var add in adds) addTechnicals.Add(add);
         }
 
-        private void TechnicalCreating()
+        private void TechnicalCreating(AddTechnical addTechnical, TechnicalResourcesBaseModel model)
         {
             try
             {
-                switch (SelectedTechnicalType)
-                {
-                    case TechnicalTypes.CPU:
-                        AddTechnical = new CreateCPU(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.RUM:
-                        AddTechnical = new CreateRUM(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.Компьютер:
-                        AddTechnical = new CreateComputer(ResourcesBaseModel);
-                        break;
-                    case TechnicalTypes.Материнская_плата:
-                        AddTechnical = new CreateMotherboard(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.Монитор:
-                        AddTechnical = new CreateMonitor(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.Операционная_система:
-                        AddTechnical = new CreateOS(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.Принтер:
-                        AddTechnical = new CreatePrinter(ResourcesBaseModel, ComputerId);
-                        break;
-                    case TechnicalTypes.Программное_обеспечение:
-                        AddTechnical = new CreateApp(ResourcesBaseModel, ComputerId);
-                        break;
-                }
-
-                AddTechnical.CreateTechnical();
+                addTechnical.CreateTechnical(model, ComputerId);
             }
             catch (DbUpdateException)
             {
